@@ -4,15 +4,27 @@ The objective of this assignment is to develop and evaluate several algorithms f
 
 Task 4: Implement a multi-class perceptron algorithm Implement (from scratch) a multi-class perceptron training algorithm and use it for training a single layer perceptron with 10 nodes (one per digit), each node having 256+1 inputs and 1 output. Train your network on the train set and evaluate on both the train and the test set, in the same way as you did in the previous steps.
 
-The algorithm:
+The algorithm for training:
 
-initialize weights w at random 
+First, we initialize 10 groups of weights w at random then we get 10 basic perceptrons.
+
+Each basic perceptrons, for example basic perceptron k, only tell us whether the sample belongs to class k or not.
+
+Using each basic perceptron, we calculate a_i =  w_0 + /sum_j x_{ij} * w_j for all the training sample.
+ 
+We set y_i = 0 for all a_i <0, otherwise y_i = 1.
+
+Then for every sample, each basic perceptron will tell us a number, 0 or 1.
+
+If the output of the basic perceptron matching with the correct class is 1, while others are 0, the sample is said to be correctly classified.
+
+Otherwise the weights of the basic perceptron making wrong judgement need to be modified.
+
+The modify algorithm is:
 
 while (there are misclassified training examples):
 
-- Select a misclassified example (x, ci) 
-	
-- Then some nodes are activated more than the node ci 
+- Select a misclassified example (x, ci) ,then some nodes are activated more than the node ci 
 
 - 1) update weights of these nodes by -x: w = w - x; 
 
@@ -21,4 +33,6 @@ while (there are misclassified training examples):
 - 3) leave weights of all other nodes unchanged
 
 end-while;
+
+We can choose the the number of iterations to avoid over fitting. In this case, we simplily choose a number of iterations 676, which get 0 misclassified sample in training dataset. Finally, we get accuracy 87.8% in testing dataset.
 
