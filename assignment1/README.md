@@ -10,11 +10,9 @@ First, we initialize 10 groups of weights w at random then we get 10 basic perce
 
 Each basic perceptrons, for example basic perceptron k, only tell us whether the sample belongs to class k or not.
 
-Using each basic perceptron, we calculate a_i =  w_0 + /sum_j x_{ij} * w_j for all the training sample.
+Using each basic perceptron, we calculate the score a_i =  w_0 + /sum_j x_{ij} * w_j for all the training sample, where i represents the sample, j represents the weight for the jth variable.
  
-We set y_i = 0 for all a_i <0, otherwise y_i = 1.
-
-Then for every sample, each basic perceptron will tell us a number, 0 or 1.
+We set y_i = 0 for all a_i <0, otherwise y_i = 1, then for every sample, each basic perceptron will tell us a number, 0 or 1.
 
 If the output of the basic perceptron matching with the correct class is 1, while others are 0, the sample is said to be correctly classified.
 
@@ -24,7 +22,7 @@ The modify algorithm is:
 
 while (there are misclassified training examples):
 
-- Select a misclassified example (x, ci) ,then some nodes are activated more than the node ci 
+- Select a misclassified example (x, ci) (some nodes are activated more than the node ci); 
 
 - 1) update weights of these nodes by -x: w = w - x; 
 
@@ -34,5 +32,7 @@ while (there are misclassified training examples):
 
 end-while;
 
-We can choose the the number of iterations to avoid over fitting. In this case, we simplily choose a number of iterations 676, which get 0 misclassified sample in training dataset. Finally, we get accuracy 87.8% in testing dataset.
+In prediction, we choose the basic perceptron with largest score, for example, perceptron b, as the best predictor for one sample, and then we classified the sample into the class b.
+
+We can choose the the number of iterations to avoid over fitting. In this case, we simplily choose 676 as the number of iterations, which get 0 misclassified sample in training dataset. Finally, we get accuracy 87.8% in testing dataset.
 
