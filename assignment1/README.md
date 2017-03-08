@@ -4,7 +4,7 @@ The objective of this assignment is to develop and evaluate several algorithms f
 
 Task 4: Implement a multi-class perceptron algorithm Implement (from scratch) a multi-class perceptron training algorithm and use it for training a single layer perceptron with 10 nodes (one per digit), each node having 256+1 inputs and 1 output. Train your network on the train set and evaluate on both the train and the test set, in the same way as you did in the previous steps.
 
-The algorithm for training:
+## The algorithm for training:
 
 First, we initialize 10 groups of weights w at random then we get 10 basic perceptrons.
 
